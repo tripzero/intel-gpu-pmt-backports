@@ -20,58 +20,6 @@ Each project is tagged consistently so when pulling these repos pull the same ta
 
 ## How to generate the DKMS module
 
-### Ubuntu
-#### Install dependencies:
-
-NOTE: replace linux-headers with headers specific to your kernel
-as needed.
-
-```
-sudo apt install \
-    dkms \
-    make \
-    linux-headers-5.14.0-1034-oem
-```
-
-#### Create debian package:
-```
-BUILD_VERSION=1 make -f Makefile.dkms dkmsdeb-pkg
-```
-
-#### Install dkms deb package:
-
-```
-sudo dpkg -i intel-platform-pmt-dkms-*.deb
-```
-
-### SLES 
-
-#### Install dependencies:
-
-```
-sudo zypper install \
-   dkms \
-   make \
-   linux-glibc-devel \
-   lsb-release \
-   rpm-build
-```
-
-#### Build and install dkms package
-```
-BUILD_VERSION=1 make -f Makefile.dkms dkmsrpm-pkg
-```
-
-The resulting rpm package will be located in:
-/usr/src/packages/RPMS/x86_64/
-
-Install with:
-
-```
-sudo zypper install --allow-unsigned-rpm \
-    /usr/src/packages/RPMS/x86_64/intel-platform-pmt-dkms-*.rpm
-```
-
 ### RHEL
 
 #### Install dependencies:
